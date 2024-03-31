@@ -1,6 +1,6 @@
 {
   "name": "bolt-cep",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "scripts": {
     "dev": "vite",
     "watch": "tsc && vite build --watch true",
@@ -40,6 +40,7 @@
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^13.1.3",
     "@rollup/plugin-replace": "^4.0.0",
+    "@types/deindent": "0.1.3",
     "@types/fs-extra": "^9.0.13",
     "@types/node": "^16.11.7",
     "@types/react": "^18.0.24",
@@ -54,6 +55,7 @@
     "cross-env": "^7.0.3",
     "fs-extra": "^10.0.0",
     "postcss": "^8.4.38",
+    "prettier": "3.2.5",
     "rimraf": "^3.0.2",
     "rollup": "^2.68.0",
     "rollup-plugin-multi-input": "^1.3.1",

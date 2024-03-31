@@ -11,8 +11,17 @@ import {
 
 import reactLogo from "../assets/react.svg";
 
-import { codeToTokens, bundledLanguagesInfo, bundledThemesInfo, BundledLanguage } from "shiki";
-import ThemeSelect from "./components/ThemeSelector";
+import {
+  codeToTokens,
+  bundledLanguagesInfo,
+  bundledThemesInfo,
+  BundledLanguage,
+} from "shiki";
+
+import * as prettier from "prettier/standalone";
+import prettierBabel from "prettier/plugins/babel";
+import prettierEstree from "prettier/plugins/estree";
+
 import ThemeSelector from "./components/ThemeSelector";
 import LanguageSelector from "./components/LanguageSelector";
 
@@ -93,7 +102,7 @@ const Main = () => {
   };
 
   const syntaxHighlightText = async () => {
-    const result: { id: number; sourceTextString: string }[] = await evalTS(
+    const result: { id: number | string; sourceTextString: string }[] = await evalTS(
       "getSelectedTextLayers"
     );
 
@@ -104,6 +113,7 @@ const Main = () => {
     for (const layer of result) {
       try {
         const sourceTextString: string = layer.sourceTextString;
+        alert(`sourceTextString: ${sourceTextString}` )
         const tokenResult = await codeToTokens(sourceTextString, {
           lang: selectedLanguage.id as BundledLanguage,
           theme: selectedTheme.id,
@@ -141,6 +151,7 @@ const Main = () => {
   return (
     <div className="app p-3" style={{ backgroundColor: bgColor }}>
       <div className="flex flex-col space-y-3">
+        <span className="text-gray-400 font-bold">Syntax Highlight</span>
         <div>
           <ThemeSelector
             themeId={selectedTheme.id}
@@ -153,25 +164,35 @@ const Main = () => {
           />
         </div>
         <div>
-        <LanguageSelector
-          languageId={selectedLanguage.id}
-          onChange={(languageId) => {
-            setSelectedLanguage(
-              bundledLanguagesInfo.find((t) => t.id === languageId) ||
-                bundledLanguagesInfo[0]
-            );
-          }}
-        />
+          <LanguageSelector
+            languageId={selectedLanguage.id}
+            onChange={(languageId) => {
+              setSelectedLanguage(
+                bundledLanguagesInfo.find((t) => t.id === languageId) ||
+                  bundledLanguagesInfo[0]
+              );
+            }}
+          />
         </div>
         <button
           type="button"
           onClick={syntaxHighlightText}
           className="rounded bg-blue-600 px-2 py-1 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
         >
-          Highlight
+          Syntax Highlight Code
         </button>
         <span className="text-xs text-gray-400">
-          This will highlight the code in the selected text layers. It's powered by <a target="_blank" className="text-blue-400 hover:underline" href="https://github.com/shikijs/shiki">Shiki JavaScript Syntax Highlighter</a>
+          This will highlight the code in the selected text layers. It's powered
+          by{" "}
+          <a
+            target="_blank"
+            className="text-blue-400 hover:underline cursor-pointer"
+            onClick={() =>
+              openLinkInBrowser(`https://github.com/shikijs/shiki`)
+            }
+          >
+            Shiki JavaScript Syntax Highlighter.
+          </a>
         </span>
       </div>
     </div>

@@ -55,3 +55,13 @@ export const colorizeTextLayer = (textLayerId: number, colors: { characterStart:
     textProp.setValue(textDocument);
   }
 }
+
+export const replaceTextLayer = (textLayerId: number, newText: string) => {
+  const textLayer = (app.project.activeItem as CompItem | null)?.layer(textLayerId) as TextLayer | null;
+  if (textLayer) {
+    const textProp = textLayer.sourceText;
+    const textDocument = textProp.value;
+    textDocument.text = newText;
+    textProp.setValue(textDocument);
+  }
+}
