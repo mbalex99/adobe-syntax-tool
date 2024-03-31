@@ -24,6 +24,7 @@ import prettierEstree from "prettier/plugins/estree";
 
 import ThemeSelector from "./components/ThemeSelector";
 import LanguageSelector from "./components/LanguageSelector";
+import ErrorAlert from "./components/ErrorAlert";
 
 function hexToRgb(hex: string): [number, number, number] {
   // Remove any leading '#' from the hex string
@@ -54,6 +55,8 @@ console.log(rgbValue); // Output: [255, 165, 0]
 
 const Main = () => {
   const [bgColor, setBgColor] = useState("#282c34");
+
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const [selectedLanguage, setSelectedLanguage] = useState(
     bundledLanguagesInfo.find((t) => t.id === "javascript") ||
@@ -102,18 +105,16 @@ const Main = () => {
   };
 
   const syntaxHighlightText = async () => {
-    const result: { id: number | string; sourceTextString: string }[] = await evalTS(
-      "getSelectedTextLayers"
-    );
+    const result: { id: number | string; sourceTextString: string }[] =
+      await evalTS("getSelectedTextLayers");
 
     if (result.length === 0) {
-      alert("No text layers selected. Please select at least one text layer.");
+      setErrorMessage("No text layers selected");
       return;
     }
     for (const layer of result) {
       try {
         const sourceTextString: string = layer.sourceTextString;
-        alert(`sourceTextString: ${sourceTextString}` )
         const tokenResult = await codeToTokens(sourceTextString, {
           lang: selectedLanguage.id as BundledLanguage,
           theme: selectedTheme.id,
@@ -137,7 +138,7 @@ const Main = () => {
         });
         await evalTS("colorizeTextLayer", layer.id, characterRangeColors);
       } catch (e) {
-        alert("Error tokenizing code");
+        setErrorMessage(JSON.stringify(e, null, 2));
       }
     }
   };
@@ -153,6 +154,11 @@ const Main = () => {
       <div className="flex flex-col space-y-3">
         <span className="text-gray-400 font-bold">Syntax Highlight</span>
         <div>
+          {errorMessage && (
+            <ErrorAlert onClose={() => setErrorMessage(null)}>
+              {errorMessage}
+            </ErrorAlert>
+          )}
           <ThemeSelector
             themeId={selectedTheme.id}
             onChange={(themeId) => {
