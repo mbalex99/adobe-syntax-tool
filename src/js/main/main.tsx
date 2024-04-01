@@ -9,7 +9,6 @@ import {
   evalTS,
 } from "../lib/utils/bolt";
 
-import reactLogo from "../assets/react.svg";
 
 import {
   codeToTokens,
@@ -17,10 +16,6 @@ import {
   bundledThemesInfo,
   BundledLanguage,
 } from "shiki";
-
-import * as prettier from "prettier/standalone";
-import prettierBabel from "prettier/plugins/babel";
-import prettierEstree from "prettier/plugins/estree";
 
 import ThemeSelector from "./components/ThemeSelector";
 import LanguageSelector from "./components/LanguageSelector";
