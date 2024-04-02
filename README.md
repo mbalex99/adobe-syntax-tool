@@ -25,6 +25,14 @@ For Windows:
 3. Open another File Explorer window and navigate to the following directory: C:\Program Files (x86)\Common Files\Adobe\CEP\extensions\.
 4. Copy the extracted folder from step 2 and paste it into the extensions folder.
 
+## Usage
+
+1. When you've successfully installed the extension, re-start Adobe After Effects or Adobe Illustrator
+2. Create a text layer
+3. Paste your code in the text layer
+4. Open `Windows > Extensions > Syntax Tools`
+5. Select your language and theme and press "Syntax Highlight Code"
+
 ---
 
 <img src="src/js/assets/bolt-cep.svg" alt="Bolt CEP" title="Bolt CEP" width="400" />
