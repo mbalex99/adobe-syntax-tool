@@ -8,7 +8,22 @@ This is an Adobe CEP Extension for Adobe After Effects and Adobe Illustrator whi
 
 ## Installing the extension
 
+1. Go to the [Releases page](releases), 
+2. Download the zip file and and place it in your extensions folder:
 
+For Mac:
+
+1. Open Finder and navigate to the location where you downloaded the Zip file.
+2. Extract the contents of the Zip file if it hasn't been automatically extracted.
+3. Open a new Finder window and navigate to the following directory: /Library/Application Support/Adobe/CEP/extensions/.
+4. Copy the extracted folder from step 2 and paste it into the extensions folder.
+
+For Windows:
+
+1. Open File Explorer and navigate to the location where you downloaded the Zip file.
+2. Extract the contents of the Zip file if it hasn't been automatically extracted.
+3. Open another File Explorer window and navigate to the following directory: C:\Program Files (x86)\Common Files\Adobe\CEP\extensions\.
+4. Copy the extracted folder from step 2 and paste it into the extensions folder.
 
 ---
 
