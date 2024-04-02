@@ -3,12 +3,10 @@ import { os, path } from "../lib/cep/node";
 import {
   csi,
   evalES,
-  evalFile,
   openLinkInBrowser,
   subscribeBackgroundColor,
   evalTS,
 } from "../lib/utils/bolt";
-
 
 import {
   codeToTokens,
@@ -43,14 +41,8 @@ function hexToRgb(hex: string): [number, number, number] {
   return [red, green, blue];
 }
 
-// Example usage:
-const hexColor = "#FFA500"; // Orange color
-const rgbValue = hexToRgb(hexColor);
-console.log(rgbValue); // Output: [255, 165, 0]
-
 const Main = () => {
-  const [bgColor, setBgColor] = useState("#282c34");
-
+  
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const [selectedLanguage, setSelectedLanguage] = useState(
@@ -62,46 +54,14 @@ const Main = () => {
       bundledThemesInfo[0]
   );
 
-  //* Demonstration of Traditional string eval-based ExtendScript Interaction
-  const jsxTest = () => {
-    console.log(evalES(`helloWorld("${csi.getApplicationID()}")`));
-  };
-
-  //* Demonstration of End-to-End Type-safe ExtendScript Interaction
-  const jsxTestTS = () => {
-    evalTS("helloStr", "test").then((res) => {
-      console.log(res);
-    });
-    evalTS("helloNum", 1000).then((res) => {
-      console.log(typeof res, res);
-    });
-    evalTS("helloArrayStr", ["ddddd", "aaaaaa", "zzzzzzz"]).then((res) => {
-      console.log(typeof res, res);
-    });
-    evalTS("helloObj", { height: 90, width: 100 }).then((res) => {
-      console.log(typeof res, res);
-      console.log(res.x);
-      console.log(res.y);
-    });
-    evalTS("helloVoid").then(() => {
-      console.log("function returning void complete");
-    });
-    evalTS("helloError", "test").catch((e) => {
-      console.log("there was an error", e);
-    });
-  };
-
-  const nodeTest = () => {
-    alert(
-      `Node.js ${process.version}\nPlatform: ${
-        os.platform
-      }\nFolder: ${path.basename(window.cep_node.global.__dirname)}`
-    );
-  };
+  const [sourceText, setSourceText] = useState<string>("");
 
   const syntaxHighlightText = async () => {
     const result: { id: number | string; sourceTextString: string }[] =
-      await evalTS("getSelectedTextLayers");
+      (await evalTS("getSelectedTextLayers")) as {
+        id: string | number;
+        sourceTextString: string;
+      }[];
 
     if (result.length === 0) {
       setErrorMessage("No text layers selected");
@@ -122,6 +82,7 @@ const Main = () => {
         tokenResult.tokens.forEach((token) => {
           token.forEach((themedToken) => {
             const offset = themedToken.offset;
+            console.log(themedToken);
             const color = themedToken.color || "#FFFFFF";
             const rgbValue = hexToRgb(color);
             characterRangeColors.push({
@@ -140,12 +101,15 @@ const Main = () => {
 
   useEffect(() => {
     if (window.cep) {
-      subscribeBackgroundColor(setBgColor);
+      subscribeBackgroundColor((color) => {
+        // sets the background color of the panel
+        document.body.style.backgroundColor = color;
+      });
     }
   }, []);
 
   return (
-    <div className="app p-3" style={{ backgroundColor: bgColor }}>
+    <div className="p-3">
       <div className="flex flex-col space-y-3">
         <span className="text-gray-400 font-bold">Syntax Highlight</span>
         <div>
@@ -194,6 +158,9 @@ const Main = () => {
           >
             Shiki JavaScript Syntax Highlighter.
           </a>
+        </span>
+        <span className="text-gray-500 text-xs">
+          Running with NodeJS version {process.version}
         </span>
       </div>
     </div>

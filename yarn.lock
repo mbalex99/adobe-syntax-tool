@@ -1370,6 +1370,18 @@
   resolved "https://registry.yarnpkg.com/@shikijs/core/-/core-1.2.2.tgz#9993d6e73077f8246164546d2f78b949cae23b64"
   integrity sha512-GXbTyNP6HlxpyWMR4eirW54Cxp84nVuivcV5hGVBgKnIl+UmD4AJgCX1uXuNRcFFAw58lB3HqryuezIc0iCLgw==
 
+"@shikijs/core@1.2.3":
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/@shikijs/core/-/core-1.2.3.tgz#551c257b6e1575ef0b87635c515dec134b32f611"
+  integrity sha512-SM+aiQVaEK2P53dEcsvhq9+LJPr0rzwezHbMQhHaSrPN4OlOB4vp1qTdhVEKfMg6atdq8s9ZotWW/CSCzWftwg==
+
+"@shikijs/monaco@^1.2.3":
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/@shikijs/monaco/-/monaco-1.2.3.tgz#a325253803f611ec66c535aabec9a5943487c27b"
+  integrity sha512-a9LY7g4Gx8ZssOhn476MHCx0QMUMg+EHjBYHjv0rqCgU9MLlBYr8+xqgd3JTjiDWDQdKrxVgy4X9o8YdFQTM2g==
+  dependencies:
+    "@shikijs/core" "1.2.3"
+
 "@tailwindcss/aspect-ratio@^0.4.2":
   version "0.4.2"
   resolved "https://registry.yarnpkg.com/@tailwindcss/aspect-ratio/-/aspect-ratio-0.4.2.tgz#9ffd52fee8e3c8b20623ff0dcb29e5c21fb0a9ba"
@@ -4295,11 +4307,6 @@ postcss@^8.4.23, postcss@^8.4.27, postcss@^8.4.38:
     picocolors "^1.0.0"
     source-map-js "^1.2.0"
 
-prettier@3.2.5:
-  version "3.2.5"
-  resolved "https://registry.yarnpkg.com/prettier/-/prettier-3.2.5.tgz#e52bc3090586e824964a8813b09aba6233b28368"
-  integrity sha512-3/GWa9aOC0YeD7LUfvOG2NiDyhOWRvt1k+rcKhOuYnMY24iiCphgneUfJDyFXd6rZCAnuLBv6UeAULtrhT/F4A==
-
 prettify-xml@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/prettify-xml/-/prettify-xml-1.2.0.tgz#46dcf1ee8a8d8b73db30b7e06ef26dc9cf3f6f18"
@@ -5287,10 +5294,10 @@ vary@^1, vary@~1.1.2:
   resolved "https://registry.yarnpkg.com/vary/-/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
   integrity sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==
 
-vite-cep-plugin@^1.1.8:
-  version "1.1.8"
-  resolved "https://registry.yarnpkg.com/vite-cep-plugin/-/vite-cep-plugin-1.1.8.tgz#8183ed2e6b7e5ee4e396e3b3092bb4adf32bdd6d"
-  integrity sha512-9VtnTq/2Cu7hSWZ5q+4vIiqq+SwRqJSy58CJsDHPQ4XmBoiTLlu518GlHw3WbNNSt1ELY55OrhdpBZunGc2+5w==
+vite-cep-plugin@^1.1.11:
+  version "1.1.11"
+  resolved "https://registry.yarnpkg.com/vite-cep-plugin/-/vite-cep-plugin-1.1.11.tgz#3ec9a402ef1d0f93cd4a0d846604394b52bd532e"
+  integrity sha512-jpdpkaq++P8hFdxjo1JyGuq1DTirQ9PQ/HWiwPq9+wsYlmRZy6sjZrOCC8sVkmwShYoxqrIVWbcbgoE5imoUeA==
   dependencies:
     "@types/archiver" "^5.3.1"
     archiver "^5.3.1"

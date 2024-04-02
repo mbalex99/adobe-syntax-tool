@@ -31,9 +31,10 @@ export const getSelectedTextLayers = () => {
   var result: {id: number, sourceTextString: string}[] = []
   for (var i = 0; i < textLayers.length; i++) {
     var thisTextLayer: TextLayer = textLayers[i]
+    const sourceTextValue = thisTextLayer.sourceText.value.text
     result.push({
       id: thisTextLayer.index,
-      sourceTextString: thisTextLayer.sourceText.value.text
+      sourceTextString: sourceTextValue
     })
   }
   return result

@@ -1,3 +1,17 @@
+# Adobe-Syntax-Tool
+
+This is an Adobe CEP Extension for Adobe After Effects and Adobe Illustrator which will take your selected text and syntax highlight the code with the [Shiki](https://shiki.style/) library.
+
+* This extension will run for Adobe After Effects version 24.3.0 or higher. Why such a late version? It was only until recently that the API exposed character range edits with the [CharacterRange object](https://ae-scripting.docsforadobe.dev/text/characterrange.html#characterrange). This extension relies on these tools to highlight characters
+* Hopefully I will find time to add this to Adobe Indesign and Adobe Premiere Pro but I've had some trouble with understanding their APIs. If anyone would like to help and add this functionality, please make a pull request!
+* 
+
+## Installing the extension
+
+
+
+---
+
 <img src="src/js/assets/bolt-cep.svg" alt="Bolt CEP" title="Bolt CEP" width="400" />
 
 A lightning-fast boilerplate for building Adobe CEP Extensions in React, Vue, or Svelte built on Vite + TypeScript + Sass
