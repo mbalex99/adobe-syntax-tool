@@ -8,7 +8,7 @@ This is an Adobe CEP Extension for Adobe After Effects and Adobe Illustrator whi
 
 ## Installing the extension
 
-1. Go to the [Releases page](releases), 
+1. Go to the [Releases page](https://github.com/mbalex99/adobe-syntax-tool/releases), 
 2. Download the zip file and and place it in your extensions folder:
 
 For Mac:
